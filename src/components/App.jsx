@@ -51,6 +51,12 @@ export class App extends Component {
     this.setState({ filter: e.currentTarget.value });
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.id !== prevState.id) {
+      localStorage.setItem('id', JSON.stringify(this.state.id));
+    }
+  }
+
   render() {
     const { filter } = this.state;
     return (
